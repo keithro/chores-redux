@@ -12,7 +12,7 @@ const initialState = [
   createTask('Water the plants')
 ];
 
-export const taskSlice = createSlice({
+export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   // Since we are using Redux Toolkit and createSlice, we can mutate original obj and it will makes copies of it for us.

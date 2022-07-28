@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { taskSlice } from './taskSlice';
+import { tasksSlice } from './tasksSlice';
 
 const createHuman = (name) => ({
   id: nanoid(),
@@ -14,7 +14,7 @@ const initialState = [
   createHuman('Marc')
 ];
 
-export const humanSlice = createSlice({
+export const humansSlice = createSlice({
   name: 'human',
   initialState,
   reducers: {
@@ -22,9 +22,9 @@ export const humanSlice = createSlice({
       state.push(createHuman(action.payload));
     }
   },
-  // extraReducers allows us to listen to other reducers, in this case taskSlice
+  // extraReducers allows us to listen to other reducers, in this case tasksSlice
   extraReducers: (builder) => {
-    builder.addCase(taskSlice.actions.assignToUser, (state, action) => {
+    builder.addCase(tasksSlice.actions.assignToUser, (state, action) => {
       for (const human of state) {
         if (human.id === action.payload.humanId) {
           human.taskIds.push(action.payload.taskId);
